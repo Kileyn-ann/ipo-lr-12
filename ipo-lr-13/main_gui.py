@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import List, Optional
 from enum import Enum
 
-# ========== МОДЕЛИ ДАННЫХ ==========
+#МОДЕЛИ ДАННЫХ 
 
 class TransportType(Enum):
     TRUCK = "Грузовик"
@@ -40,7 +40,7 @@ class Transport:
             "current_load": self.current_load
         }
 
-# ========== ОСНОВНОЙ КЛАСС ПРИЛОЖЕНИЯ ==========
+#ОСНОВНОЙ КЛАСС ПРИЛОЖЕНИЯ
 
 class CargoDistributionApp:
     def __init__(self, root):
@@ -58,7 +58,7 @@ class CargoDistributionApp:
         self.setup_widgets()
         self.setup_statusbar()
         
-    # ========== НАСТРОЙКА МЕНЮ ==========
+    # НАСТРОЙКА МЕНЮ 
     
     def setup_menu(self):
         menubar = tk.Menu(self.root)
@@ -81,7 +81,7 @@ class CargoDistributionApp:
         # Привязка горячих клавиш
         self.root.bind('<Control-e>', lambda e: self.export_results())
         
-    # ========== НАСТРОЙКА ОСНОВНЫХ ВИДЖЕТОВ ==========
+    #НАСТРОЙКА ОСНОВНЫХ ВИДЖЕТОВ
     
     def setup_widgets(self):
         # Основной фрейм
@@ -195,7 +195,7 @@ class CargoDistributionApp:
         # Привязка двойного клика для редактирования
         self.transports_tree.bind("<Double-1>", lambda e: self.edit_transport())
         
-    # ========== НАСТРОЙКА СТРОКИ СОСТОЯНИЯ ==========
+    #НАСТРОЙКА СТРОКИ СОСТОЯНИЯ 
     
     def setup_statusbar(self):
         self.status_var = tk.StringVar()
@@ -207,7 +207,7 @@ class CargoDistributionApp:
         self.status_var.set(message)
         self.root.after(3000, lambda: self.status_var.set("Готово") if self.status_var.get() == message else None)
         
-    # ========== ОКНА РЕДАКТИРОВАНИЯ ==========
+    #ОКНА РЕДАКТИРОВАНИЯ
     
     def add_client(self):
         self.open_client_window()
@@ -393,7 +393,7 @@ class CargoDistributionApp:
         type_combo.focus_set()
         window.columnconfigure(1, weight=1)
         
-    # ========== ОПЕРАЦИИ С ДАННЫМИ ==========
+    #ОПЕРАЦИИ С ДАННЫМИ
     
     def delete_client(self):
         selection = self.clients_tree.selection()
@@ -507,7 +507,7 @@ class CargoDistributionApp:
         # Кнопка закрытия
         ttk.Button(window, text="Закрыть", command=window.destroy).pack(pady=10)
         
-    # ========== ЭКСПОРТ ДАННЫХ ==========
+    #ЭКСПОРТ ДАННЫХ
     
     def export_results(self):
         if not self.clients and not self.transports:
@@ -538,7 +538,7 @@ class CargoDistributionApp:
             except Exception as e:
                 messagebox.showerror("Ошибка", f"Ошибка при экспорте: {str(e)}")
                 
-    # ========== ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ==========
+    # ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ 
     
     def refresh_tables(self):
         # Очистка таблиц
@@ -594,7 +594,7 @@ class CargoDistributionApp:
         )
         messagebox.showinfo("О программе", about_text)
 
-# ========== ТОЧКА ВХОДА ==========
+#ТОЧКА ВХОДА 
 
 def main():
     root = tk.Tk()
